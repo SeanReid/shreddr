@@ -8,9 +8,9 @@ class MessageController < ApplicationController
   end
 
   def check_for_auth
-    if session[:user_id] != @message.user_id
-      redirect_to message_path, :notice => "Can only edit your Shredd!"
-    end
+    # if session[:user_id] != @message.user_id
+    #   redirect_to edit_message_path, :notice => "Can only edit your Shredd!"
+    # end
   end
 
   def index
@@ -20,7 +20,7 @@ class MessageController < ApplicationController
     #   @user = User.where(name: params[:name]).first
     #   @messages = @user.messages
     # else
-      @messages = Message.all
+      @messages = Message.all.order("created_at DESC")
     # end
   end
 

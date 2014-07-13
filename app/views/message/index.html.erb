@@ -10,7 +10,7 @@
         </tr>
     <% @messages.each do |message| %>
         <tr>
-        <td><%= message.status %> ===></td>
+        <td><%= message.status %> <%= distance_of_time_in_words(Time.now, message.created_at)%> ago</td>
         <td><%= link_to "@" + message.user.name, user_path(message.user) %></td>
    	    </tr>
         <tr>
