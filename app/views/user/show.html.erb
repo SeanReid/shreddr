@@ -2,20 +2,20 @@
 <h3>Where: <%= @user.location %></h3>
 
 <% if @messages.empty? %>
-    <em>No tweets found</em>
+  <em>No tweets found</em>
 <% else %>
-    <table>
-        <tr>
-            <th>Status</th>
-        </tr>
-    <% @messages.each do |message| %>
-        <tr>
-        <td><%= message.status %></td>
-        <tr>
-          <!-- <td><%= link_to 'Edit', edit_message_path(message) %>
-              <%= link_to 'Destroy', message, :method => :destroy %></td> -->
-        </tr>
-        <tr><td>-------------</td></tr>
-    <% end %>
-    </table>
+  <table>
+    <tr>
+      <th>Status</th>
+    </tr>
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.status %></td>
+    <tr>
+    <!-- <td><%= link_to 'Edit', edit_message_path(message) %>
+            <%= link_to 'Destroy', message, :method => :destroy %></td> -->
+    </tr>
+      <tr><td>-------------</td></tr>
+  <% end %>
+  </table>
 <% end %>

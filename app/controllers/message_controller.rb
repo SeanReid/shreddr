@@ -41,8 +41,9 @@ class MessageController < ApplicationController
 
   def create
     # create a new message
-    if @message = Message.create(params[:message])
-      render :show
+    message = params[:message][:status]
+    if @message = Message.create(user: User.first, status: message)
+      redirect_to message_index_path
     else
       render :new
     end
