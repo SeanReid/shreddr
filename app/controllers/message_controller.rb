@@ -1,5 +1,5 @@
 class MessageController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :get_message , only: [:edit, :update, :destroy]
   before_action :check_for_auth , :only => [:edit, :update, :destroy]
 
@@ -20,6 +20,7 @@ class MessageController < ApplicationController
     #   @user = User.where(name: params[:name]).first
     #   @messages = @user.messages
     # else
+    @message = Message.create
       @messages = Message.all.order("created_at DESC")
     # end
   end
@@ -42,7 +43,7 @@ class MessageController < ApplicationController
   def create
     # create a new message
     message = params[:message][:status]
-    if @message = Message.create(user: User.first, status: message)
+    if @message = Message.create(user: current_user, status: message)
       redirect_to message_index_path
     else
       render :new

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'message#new'
+  devise_for :users
+  root to: 'message#index'
   resources :user
   resources :message
   get '/message/new' => 'message#new', as: 'messages'
