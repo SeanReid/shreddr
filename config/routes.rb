@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'message#index'
+  root to: 'message#new'
   resources :user
   resources :message
   post '/message/new' => 'message#new', as: 'messages'
